@@ -1,49 +1,48 @@
 $(function(){ 
-  console.log("done")
   var buildHTML = function(message) {
     if (message.content && message.image) {
-      var html = `<div class="message" data-message-id=` + message.id + `>` +
-        `<div class="message__upper-info">` +
-          `<div class="message__upper-info__talker">` +
-            message.user_name +
-          `</div>` +
-          `<div class="message__upper-info__date">` +
-            message.created_at +
-          `</div>` +
-        `</div>` +
-        `<div class="message__comment">` +
-          message.content +
-          `<img src="` + message.image + `" class="lower-message__image" >` +
-        `</div>` +
-      `</div>`
+      var html = `<div class="message" data-message-id= ${message.id}>
+        <div class="message__upper-info">
+          <div class="message__upper-info__talker">
+            ${message.user_name} 
+          </div>
+          <div class="message__upper-info__date">
+            ${message.created_at}
+          </div>
+        </div>
+        <div class="message__comment">
+          ${message.content}
+          <img src="${message.image} " class="lower-message__image" >
+        </div>
+      </div>`
     } else if (message.content) {
-      var html = `<div class="message" data-message-id=` + message.id + `>` +
-        `<div class="message__upper-info">` +
-          `<div class="message__upper-info__talker">` +
-            message.user_name +
-          `</div>` +
-          `<div class="message__upper-info__date">` +
-            message.created_at +
-          `</div>` +
-        `</div>` +
-        `<div class="message__comment">` +
-          message.content +
-        `</div>` +
-      `</div>`
+      var html = `<div class="message" data-message-id=${message.id}>
+        <div class="message__upper-info">
+          <div class="message__upper-info__talker">
+            ${message.user_name} 
+          </div>
+          <div class="message__upper-info__date">
+            ${message.created_at} 
+          </div>
+        </div>
+        <div class="message__comment">
+          ${message.content} 
+        </div>
+      </div>`
     } else if (message.image) {
-      var html = `<div class="message" data-message-id=` + message.id + `>` +
-        `<div class="message__upper-info">` +
-          `<div class="message__upper-info__talker">` +
-            message.user_name +
-          `</div>` +
-          `<div class="message__upper-info__date">` +
-            message.created_at +
-          `</div>` +
-        `</div>` +
-        `<div class="message__comment">` +
-          `<img src="` + message.image + `" class="lower-message__image" >` +
-        `</div>` +
-      `</div>`
+      var html = `<div class="message" data-message-id=${message.id}>
+        <div class="message__upper-info">
+          <div class="message__upper-info__talker">
+            ${message.user_name}
+          </div>
+          <div class="message__upper-info__date">
+            ${message.created_at}
+          </div>
+        </div>
+        <div class="message__comment">
+          <img src="${message.image}" class="lower-message__image" >
+        </div>
+      </div>`
     };
     return html;
   };
@@ -72,9 +71,6 @@ $(function(){
   });
   var reloadMessages = function() {
     var last_message_id = $('.message:last').data("message-id");
-    console.log(last_message_id)
-
-
     $.ajax({
       url: "api/messages",
       type: 'get',
@@ -96,7 +92,6 @@ $(function(){
     });
   };
     if (document.location.href.match(/\/groups\/\d+\/messages/)) {
-      console.log("done")
       setInterval(reloadMessages, 7000);
     }
 });
