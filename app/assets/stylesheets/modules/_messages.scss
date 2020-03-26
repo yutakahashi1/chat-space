@@ -84,9 +84,11 @@
         margin-top: 35px;
 
         &__current-group {
-          color: #333333;
-          margin-bottom: 15px;
-          font-size: 20px;
+          h2 {
+            color: #333333;
+            margin-bottom: 15px;
+            font-size: 20px;
+          }
         }
 
         &__member-list {
