@@ -80,4 +80,3 @@ end
 
 gem 'fog-aws'
 
-gem 'jquery-turbolinks'
