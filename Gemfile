@@ -79,3 +79,5 @@ group :production do
 end
 
 gem 'fog-aws'
+
+gem 'jquery-turbolinks'
